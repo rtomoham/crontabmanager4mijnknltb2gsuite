@@ -26,7 +26,7 @@
  *
  */
 
-namespace php\manager\crontab;
+#namespace php\manager\crontab;
 
 /**
  * Crontab Entry object
@@ -409,3 +409,4 @@ class CronEntry
         return $this->render(true);
     }
 }
+?>
