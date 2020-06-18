@@ -409,4 +409,5 @@ class CronEntry
         return $this->render(true);
     }
 }
+
 ?>
