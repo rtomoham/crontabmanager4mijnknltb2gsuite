@@ -1,6 +1,8 @@
 <?php
 
 include_once("Utils.php");
+include_once("CrontabManager.php");
+include_once("CronEntry.php");
 
 $manager = new CrontabManager();
 
