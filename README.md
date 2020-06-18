@@ -3,6 +3,8 @@ PHP Crontab Manager
 
 Last build status: [![Build Status](https://secure.travis-ci.org/MediovskiTechnology/php-crontab-manager.png?branch=master)](http://travis-ci.org/MediovskiTechnology/php-crontab-manager)
 
+Requires Utils.php from mijnknltb2gsuite
+
 Manages linux crontab file by adding and deleting the appropriate entries. It is
 able to track the source file so that after the changes to this file, he will
 be able to enter and update the user's crontab file in safe way (doesn't remove
