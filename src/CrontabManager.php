@@ -30,7 +30,6 @@
 
 #namespace php\manager\crontab;
 
-include_once('Utils.php');
 include_once('CronEntry.php');
 
 /**
@@ -100,30 +99,6 @@ class CrontabManager {
      */
     public function __construct() {
         $this->_setTempFile();
-		
-		$settings = getSettings();
-		$cron = $settings[STRING_CRON];
-
-		$timecode = '';
-                foreach ($cron as $key=>$item) {
-                    if (0 >= strlen($item)) {
-                        $cron[$key] = '*';
-                    }
-                    $timecode .= $cron[$key] . ' ';
-                }
-                $timecode = substr($timecode, 0, -1);
-                
-		$onMinute = $cron[STRING_ON_MINUTE]; 
-		$onHour = $cron[STRING_ON_HOUR];
-		$onDayOfMonth = $cron[STRING_ON_DAY_OF_MONTH];
-		$onMonth = $cron[STRING_ON_MONTH];
-		$onDayOfWeek = $cron[STRING_ON_DAY_OF_WEEK];
-
-		$job = $this->newJob();
-		$job->on($timecode);
-		$job->doJob('php /mijnknltb2gsuite/refresh.php');
-		$this->add($job);
-		$this->save();
     }
 
     /**
@@ -615,7 +590,5 @@ class CrontabManager {
     }
 
 }
-
-new CrontabManager();
 
 ?>
