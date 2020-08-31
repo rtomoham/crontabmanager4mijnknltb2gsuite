@@ -26,7 +26,7 @@ $timecode = substr($timecode, 0, -1);
 
 $job = $manager->newJob();
 $job->on($timecode);
-$job->doJob('php /somtoday2gsuite/refresh.php');
+$job->doJob('php /etc/somtoday2gsuite/refresh.php');
 $manager->add($job);
 $manager->save(False);
 
