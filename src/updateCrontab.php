@@ -26,7 +26,7 @@ $timecode = substr($timecode, 0, -1);
 
 $job = $manager->newJob();
 $job->on($timecode);
-$job->doJob('php /etc/mijnknltb2gsuite/refresh.php > /mnt/mijnknltb2gsuite/output.txt');
+$job->doJob("php $PATH_PROGRAM/refresh.php > $PATH_DATA/output.txt");
 $manager->add($job);
 $manager->save(False);
 
