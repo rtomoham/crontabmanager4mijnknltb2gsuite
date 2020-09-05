@@ -1,13 +1,14 @@
 <?php
 
-include_once("Utils.php");
-include_once("CrontabManager.php");
-include_once("CronEntry.php");
+require_once('Utils.php');
+require_once('CrontabManager.php');
+require_once('CronEntry.php');
+require_once('Settings.php);
 
 $manager = new CrontabManager();
 
-$settings = getSettings();
-$cron = $settings[STRING_CRON];
+$settings = Settings::getInstance();
+$cron = $settings->getCron();
 
 $timecode = '';
 foreach ($cron as $key=>$item) {
@@ -26,7 +27,7 @@ $timecode = substr($timecode, 0, -1);
 
 $job = $manager->newJob();
 $job->on($timecode);
-$job->doJob('php /etc/mijnknltb2gsuite/refresh.php > /mnt/mijnknltb2gsuite/output.txt');
+$job->doJob('php ' . $settings->getProgramPath() . 'refresh.php > ' . $settings->getDataPath() . 'output.txt');
 $manager->add($job);
 $manager->save(False);
 
