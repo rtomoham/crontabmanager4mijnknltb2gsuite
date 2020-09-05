@@ -10,7 +10,7 @@ $settings = Settings::getInstance();
 
 if ($argc > 1) {
   echo("ARGUMENT provided: running settings->init($argv[1]).\n\n");
-  $settings->init(argv[1]);
+  $settings->init($argv[1]);
 }
 
 $cron = $settings->getCron();
