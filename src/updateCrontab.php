@@ -1,14 +1,12 @@
 <?php
 
-include_once("Utils.php");
-include_once("CrontabManager.php");
-include_once("CronEntry.php");
-
+require_once('Utils.php');
+require_once('CrontabManager.php');
+require_once('CronEntry.php');
+require_once('Settings.php);
 $manager = new CrontabManager();
-
-$settings = getSettings();
-$cron = $settings[STRING_CRON];
-
+$settings = Settings::getInstance();
+$cron = $settings->getCron();
 $timecode = '';
 foreach ($cron as $key=>$item) {
   if (0 >= strlen($item)) {
@@ -23,10 +21,9 @@ $timecode = substr($timecode, 0, -1);
 		$onDayOfMonth = $cron[STRING_ON_DAY_OF_MONTH];
 		$onMonth = $cron[STRING_ON_MONTH];
 		$onDayOfWeek = $cron[STRING_ON_DAY_OF_WEEK];
-
 $job = $manager->newJob();
 $job->on($timecode);
-$job->doJob('php ' . PATH_PROGRAM . '/refresh.php > ' . PATH_DATA . '/output.txt');
+$job->doJob('php ' . $settings->getProgramPath() . 'refresh.php > ' . $settings->getDataPath() . 'output.txt');
 $manager->add($job);
 $manager->save(False);
 
