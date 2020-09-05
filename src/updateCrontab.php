@@ -24,11 +24,11 @@ foreach ($cron as $key=>$item) {
 }
 $timecode = substr($timecode, 0, -1);
                 
-$onMinute = $cron[$ettings->STRING_ON_MINUTE]; 
-$onHour = $cron[$ettings->STRING_ON_HOUR];
-$onDayOfMonth = $cron[$ettings->STRING_ON_DAY_OF_MONTH];
-$onMonth = $cron[$ettings->STRING_ON_MONTH];
-$onDayOfWeek = $cron[$ettings->STRING_ON_DAY_OF_WEEK];
+$onMinute = $cron[$settings->STRING_ON_MINUTE]; 
+$onHour = $cron[$settings->STRING_ON_HOUR];
+$onDayOfMonth = $cron[$settings->STRING_ON_DAY_OF_MONTH];
+$onMonth = $cron[$settings->STRING_ON_MONTH];
+$onDayOfWeek = $cron[$settings->STRING_ON_DAY_OF_WEEK];
 
 $job = $manager->newJob();
 $job->on($timecode);
