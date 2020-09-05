@@ -4,9 +4,17 @@ require_once('Utils.php');
 require_once('CrontabManager.php');
 require_once('CronEntry.php');
 require_once('Settings.php);
+
 $manager = new CrontabManager();
 $settings = Settings::getInstance();
+
+if ($argc > 1) {
+  echo("ARGUMENT provided: running settings->init($argv[1]).\n\n");
+  $settings->init(argv[1]);
+}
+
 $cron = $settings->getCron();
+
 $timecode = '';
 foreach ($cron as $key=>$item) {
   if (0 >= strlen($item)) {
